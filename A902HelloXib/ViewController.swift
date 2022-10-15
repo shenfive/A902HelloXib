@@ -8,16 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var theImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let newView = MyView(frame: CGRect(x: 100, y: 100, width: 300, height: 300))
-        newView.clipsToBounds = true
-        newView.switchAction = {
-            print("print from UIViewController")
+        let url = URL(string: "https://miro.medium.com/max/720/1*FKlRYAU5z-74RYqsTYrOAQ@2x.png")!
+                
+        do{
+            let imageData = try Data(contentsOf: url)
+            theImageView.image = UIImage(data: imageData)
+        }catch{
+            print(error.localizedDescription)
         }
-        self.view.addSubview(newView)
+        
         
       
     }
