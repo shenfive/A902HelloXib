@@ -11,7 +11,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let newView = MyView(frame: CGRect(x: 100, y: 100, width: 300, height: 300))
+        newView.clipsToBounds = true
+        newView.switchAction = {
+            print("print from UIViewController")
+        }
+        self.view.addSubview(newView)
+        
+      
     }
 
 
